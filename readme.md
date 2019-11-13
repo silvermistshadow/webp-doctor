@@ -1,12 +1,12 @@
-# _{Application Name}_
+# _Doctor Lookup_
 
-#### _{Brief description of application}, {Date of current version}_
+#### _Uses API to return doctors in portland, 11-13-2019_
 
-#### By _**{List of contributors}**_
+#### By _**BM**_
 
 ## Description
 
-_{This is a detailed description of your application. Its purpose and usage.  Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. }_
+_Users enter a medical issue or a name into a form and recieve a list of doctors in Portland that fit the query_
 
 ## Setup/Installation Requirements
 
