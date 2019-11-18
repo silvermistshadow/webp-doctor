@@ -28,9 +28,14 @@ export class Doctor {
     });
     illnessSearch.then(function(response) {
       let body = JSON.parse(response);
-      let practices = body.main.name;
-    }, function(error) {
+      let practices = body.data.practices;
+      for (let x = 0; x<practices.length; x++) {
+        that.practiceList.push(practices.name[x]);
+      }
 
+    }, function(error) {
+      $(".showErrors").text(`There was an error somewhere in here: ${error}`);
+      console.error(error);
     });
   }
 }
