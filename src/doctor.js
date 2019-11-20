@@ -5,11 +5,11 @@ const apiKey = process.env.API_KEY;
 
 export class Doctor {
   constructor() {
-    medicalIssue = medicalIssue;
-    doctorName = doctorName;
-    practiceList = [];
+    this.medicalIssue;
+    this.doctorName;
+    this.practiceList = [];
   }
-  searchIssue() {
+  async searchIssue() {
     let that = this;
     let issue = this.medicalIssue;
     let illnessSearch = new Promise(function(resolve, reject) {
@@ -28,14 +28,17 @@ export class Doctor {
     });
     illnessSearch.then(function(response) {
       let body = JSON.parse(response);
-      let practices = body.data.practices;
+      let practices = new Array(body.data.practices);
+      console.log(body.data.practices[0]);
       for (let x = 0; x<practices.length; x++) {
-        that.practiceList.push(practices.name[x]);
+        that.practiceList.push(practices[x].name);
       }
+      return true;
 
     }, function(error) {
       $(".showErrors").text(`There was an error somewhere in here: ${error}`);
       console.error(error);
+      return false;
     });
   }
 }
