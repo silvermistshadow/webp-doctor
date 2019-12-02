@@ -25,13 +25,13 @@
 
 #### Please list the names of the lessons you completed today:
 
-* 
+* None
 
 
 #### Please list the names of the projects you worked on today:
 
-* 
+* webp-doctor
 
 #### Please add a link to GitHub repository to all projects you worked on today:
 
-* 
+* https://github.com/silvermistshadow/webp-doctor
