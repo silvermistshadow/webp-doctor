@@ -1,12 +1,13 @@
 require('dotenv').config();
 import $ from 'jquery';
+const Handlebars = require("handlebars");
 
 const apiKey = process.env.API_KEY;
 
 export class Doctor {
   constructor() {
     this.medicalIssue;
-    this.doctorName;
+    this.doctorName = [];
     this.practiceList = [];
   }
   async searchIssue() {
@@ -27,12 +28,9 @@ export class Doctor {
       request.send();
     });
     illnessSearch.then(function(response) {
-      let body = JSON.parse(response);
-      let practices = new Array(body.data.practices);
-      console.log(body.data.practices[0]);
-      for (let x = 0; x<practices.length; x++) {
-        that.practiceList.push(practices[x].name);
-      }
+      let data = JSON.parse(response);
+      var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
+      document.getElementById('doctor-list').innerHTML = template(data);
       return true;
 
     }, function(error) {

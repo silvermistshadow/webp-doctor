@@ -4,6 +4,25 @@
     <title>Doctor lookup</title>
   </head>
   <body>
+      <script id="docs-template" type="text/x-handlebars-template">
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Title</th>
+                <th>Picture</th>
+            </thead>
+            <tbody>
+            {{#data}}
+            <tr>
+                <td><a href="{{attribution_url}}" target="_new">{{profile.first_name}} {{profile.last_name}}</a><br>
+                  <img src="{{ratings.0.image_url_small}}"></img></td>
+                <td>{{profile.title}}</td>
+                <td><img src="{{profile.image_url}}"></img></td>
+            </tr>
+            {{/data}}
+            </tbody>
+        </table>
+    </script>
     <div class="container">
       <form id="issue-form">
         <div class="form-group">
@@ -14,6 +33,7 @@
       </form>
 
       <div class="showErrors"></div>
+      <div id="doctor-list"></div>
     </div>
 
   </body>
