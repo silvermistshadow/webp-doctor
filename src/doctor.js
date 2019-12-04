@@ -29,8 +29,14 @@ export class Doctor {
     });
     illnessSearch.then(function(response) {
       let data = JSON.parse(response);
-      var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
-      document.getElementById('doctor-list').innerHTML = template(data);
+      if (data.length != 0) {
+        var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
+        document.getElementById('doctor-list').innerHTML = template(data);
+      }
+      else {
+        $('#doctor-list').html("No doctors found for this query.");
+      }
+
       return true;
 
     }, function(error) {

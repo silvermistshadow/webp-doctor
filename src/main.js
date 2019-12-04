@@ -8,7 +8,7 @@ $(document).ready(function() {
     event.preventDefault();
     issueSearch.medicalIssue = $('#issue-input').val();
     let issueAsync = issueSearch.searchIssue().then(function() {
-      setTimeout(console.log(issueSearch.practiceList), 500);
+      setTimeout(console.info('done'), 500);
     })
   })
 });
