@@ -21,6 +21,8 @@ _Users enter a medical issue or a name into a form and recieve a list of doctors
 
 _Images are returned as part of the results but do not display properly- can't fix from here, as the pictures are simply inaccessible; they don't load when I try to go to them manually either._
 
+_Revised: images removed from template._
+
 
 ## Technologies Used
 
