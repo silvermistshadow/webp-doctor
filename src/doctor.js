@@ -1,6 +1,6 @@
 require('dotenv').config();
 import $ from 'jquery';
-const Handlebars = require("handlebars");
+
 
 const apiKey = process.env.API_KEY;
 
@@ -28,17 +28,16 @@ export class Doctor {
       request.send();
     });
     illnessSearch.then(function(response) {
-      let data = JSON.parse(response);
-      if (data.length != 0) {
-        var template = Handlebars.compile(document.getElementById('docs-template').innerHTML);
-        document.getElementById('doctor-list').innerHTML = template(data);
+      let res = JSON.parse(response);
+      let doctors = res.data;
+      if (doctors.length != 0) {
+        doctors.forEach(function(item) {
+          $("doctor-list").append(`<p>Name: ${item.profile.first_name} ${item.profile.Last_name}</p>` + `<p>Address: ${item.practices[0].visit_address.street}</p>`)
+        })
+      } else {
+        $(".showErrors").text("Could not find anything for that query.")
       }
-      else {
-        $('#doctor-list').html("No doctors found for this query.");
-      }
-
       return true;
-
     }, function(error) {
       $(".showErrors").text(`There was an error somewhere in here: ${error}`);
       console.error(error);
